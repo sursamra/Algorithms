@@ -15,11 +15,21 @@ namespace Algorithms
             //For pull request
             //forked by l4m2
             // updated by sursamra in master
-            Dijkstras_printing_paths.Test();
+            //Dijkstras_printing_paths.Test();
+           
+           string val = TestWildcardCharacters.WildcardCharacters("++*{5} gheeeee");
+           val = TestWildcardCharacters.WildcardCharacters("+++++* abcdemmmmmm");
+           val = TestWildcardCharacters.WildcardCharacters("**+*{2} mmmrrrkbb");
+            
+             
+
+            string s = MainClass.Calculator("6*(4/2)+3*1");
+            Minimum_costs_Fueling_car_with_diff_prices.Test();
+            Prim_Minimum_Spanning_tree.Test();
             Car_fueling_gas_Station.Test1();
             Car_fueling_gas_Station.Test2();
             Algorithms.Trees.BinarySearchTree.Test();
-            GFG.RunDijkstra();
+            Dijkstras_shortest_path_greedy.RunDijkstra();
 
             foreach (var item in GetPer(new char[] { 'a', 'b', 'c' }))
             {
@@ -57,145 +67,7 @@ namespace Algorithms
         // representation of the graph 
         // details https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
 
-        class GFG
-        {
-            static List<string> list = new List<string>();
-            // A utility function to find the 
-            // vertex with minimum distance 
-            // value, from the set of vertices 
-            // not yet included in shortest 
-            // path tree 
-            static int V = 9;
-            int minDistance(int[] dist,
-                            bool[] sptSet)
-            {
-                // Initialize min value 
-                int min = int.MaxValue, min_index = -1;
 
-                for (int v = 0; v < V; v++)
-                {
-                    list.Add($"Loop int v = 0; v < V; v++  v-> {v} ; {v} < {V};");
-                    list.Add($"if sptSet[v] == false {sptSet[v]} == false && dist[v] <= min {dist[v]} <= {min}");
-                    if (sptSet[v] == false && dist[v] <= min)
-                    {
-                        min = dist[v];
-                        min_index = v;
-                        list.Add($" min {min} min_index {min_index}");
-                    }
-                }
-                return min_index;
-            }
-
-            // A utility function to print 
-            // the constructed distance array 
-            void printSolution(int[] dist)
-            {
-                Console.Write("Vertex \t\t Distance "
-                              + "from Source\n");
-                list.Add("Vertex \t\t Distance "
-                              + "from Source\n");
-                for (int i = 0; i < V; i++)
-                {
-                    Console.Write(i + " \t\t " + dist[i] + "\n");
-                    list.Add(i + " \t\t " + dist[i] + "\n");
-                }
-            }
-
-            // Funtion that implements Dijkstra's 
-            // single source shortest path algorithm 
-            // for a graph represented using adjacency 
-            // matrix representation 
-            void dijkstra(int[,] graph, int src)
-            {
-                int[] dist = new int[V]; // The output array. dist[i] 
-                                         // will hold the shortest 
-                                         // distance from src to i 
-
-                // sptSet[i] will true if vertex 
-                // i is included in shortest path 
-                // tree or shortest distance from 
-                // src to i is finalized 
-                bool[] sptSet = new bool[V];
-
-                // Initialize all distances as 
-                // INFINITE and stpSet[] as false 
-                for (int i = 0; i < V; i++)
-                {
-                    dist[i] = int.MaxValue;
-                    sptSet[i] = false;
-                }
-
-                // Distance of source vertex 
-                // from itself is always 0 
-                dist[src] = 0;
-
-                // Find shortest path for all vertices 
-                for (int count = 0; count < V - 1; count++)
-                {
-                    list.Add($"int count = 0; count < V - 1; count++  count ->{count} {count} < {V - 1}");
-                    // Pick the minimum distance vertex 
-                    // from the set of vertices not yet 
-                    // processed. u is always equal to 
-                    // src in first iteration. 
-                    int u = minDistance(dist, sptSet);
-                    list.Add($"minDistance = {u}");
-
-                    // Mark the picked vertex as processed 
-                    sptSet[u] = true;
-                    list.Add($"sptSet[u] = {sptSet[u]}");
-                    // Update dist value of the adjacent 
-                    // vertices of the picked vertex. 
-                    list.Add($"Loop 0 to 9");
-                    for (int v = 0; v < V; v++)
-                    {
-                        // Update dist[v] only if is not in 
-                        // sptSet, there is an edge from u 
-                        // to v, and total weight of path 
-                        // from src to v through u is smaller 
-                        // than current value of dist[v] 
-                        list.Add($"v -> {v}");
-                        list.Add($"!sptSet[u] = {sptSet[u]} && graph[u, v] != 0 {graph[u, v]} != 0  && dist[u] != int.MaxValue {dist[u]} !={int.MaxValue} && dist[u] + graph[u, v] < dist[v] {dist[u]} + {graph[u, v]} < {dist[v]} ");
-                        //if a vertex is not processed and vertex is reachable from source and distance of vertex is not infinite
-                        // distance from source is less than existing path then update distance as new shortest path.
-                        if (!sptSet[v] && graph[u, v] != 0 && dist[u] != int.MaxValue
-                                && dist[u] + graph[u, v] < dist[v])
-                        {
-
-                            dist[v] = dist[u] + graph[u, v];
-                            list.Add($"dist[v] = dist[u] + graph[u, v] {dist[v]} = {dist[u]} + {graph[u, v]}");
-                        }
-                    }
-                }
-
-                // print the constructed distance array 
-                printSolution(dist);
-                System.IO.File.WriteAllLines(@"C:\temp2\test\out2.txt", list);
-            }
-
-            // Driver Code 
-            public static void RunDijkstra()
-            {
-                /*
-                 * see the image dijkstras-shortest-path-algorithm-greedy-algo2.png
-                 * following graph says for element at 0, there are only  2 possible paths go to vertices
-                 * 1 with distance / edge 4 hence (0,4) ie from 0 to go to 1 there is distance of 4
-                 * then all other next possible path is to vertices 7 with distance of 8. As all other verticies are 
-                 * not reachable form location 0 hence they are zero. then repeat
-                 * 
-                 */
-                int[,] graph = new int[,] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
-                                      { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-                                      { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
-                                      { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
-                                      { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-                                      { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
-                                      { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
-                                      { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-                                      { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-                GFG t = new GFG();
-                t.dijkstra(graph, 0);
-            }
-        }
 
         void FindStartingPoint(int[] gasOnStation, int[] gasDrivingCosts, int gasTankSize)
         {

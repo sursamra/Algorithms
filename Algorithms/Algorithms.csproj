@@ -45,16 +45,24 @@
   <ItemGroup>
     <Compile Include="BinarySearchTree.cs" />
     <Compile Include="Car_fueling_gas_Station.cs" />
+    <Compile Include="Calculator.cs" />
+    <Compile Include="Dijkstras_shortest_path_greedy.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Minimum_costs_Fueling_car_with_diff_prices.cs" />
     <Compile Include="Dijkstras_printing_paths.cs" />
+    <Compile Include="Prim_Minimum_Spanning_tree.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WildChars.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Logs\Car_fuel_20205325031106.txt" />
     <Content Include="dijkstras-shortest-path-algorithm-greedy-algo2.png" />
+    <Content Include="Prim_Minimum_Spanning_tree.png" />
+    <Content Include="shortest_path_sql.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

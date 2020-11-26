@@ -33,9 +33,14 @@ Your car can travel 170 miles on a tank of gas.
          */
         public static void Test()
         {
+            Logger.Init("Minimum_cost_diff_fueling_prices");
             int[] price = { 12, 14, 21, 14, 17, 22, 11, 16, 17, 12, 30, 25, 27, 24, 22, 15, 24, 23, 15, 21 }; //total 20 stations
 
             int[] distance = { 31, 42, 31, 33, 12, 34, 55, 25, 34, 64, 24, 13, 52, 33, 23, 64, 43, 25, 15 };  //total 19 distances      
+            Logger.Log(0, "prices");
+            Logger.Log(1, price);
+            Logger.Log(0, "distance");
+            Logger.Log(1, distance);
 
             int N = 19;
             int[] cost = new int[N];
@@ -52,28 +57,45 @@ Your car can travel 170 miles on a tank of gas.
 
             for (i = 1; i <= N - 1; i++) //for every station from 1 to 18
             {
-
+                Logger.Log(0, $"At station {i}");
                 int priceval = price[i]; //get price of station i               
                 int min = int.MaxValue;
                 dist = 0;
-
+                Logger.Log(1, $"Look for other stations backward from {i} and check for {i - 1} to 0");
                 for (j = i - 1; j >= 0; j--) //for every station j within 170 away from station i
                 {
+
                     dist += distance[j]; //distance[j] is distance from station j to station j+1
+                    Logger.Log(2, $"Price and distance {priceval} and  {dist}  at  station {j} from station {i}");
                     if (dist > maxroad)
+                    {
+                        Logger.Log(3, $"Gone too far as dist > maxroad i.e. {dist} > {maxroad}");
                         break;
+                    }
 
                     if ((cost[j] + priceval * dist) < min) //pick MIN value defined in recurrence relation                       
                     {
+                        Logger.Log(2, $"cost[j] + priceval * dist < min i.e. {cost[j]} + {priceval} * {dist} < {min} i.e. {cost[j] + priceval * dist} < {min}");
+                        Logger.Log(2, $" parent[i] = j i.e. parent at {i} replaced with {j} i.e. {parent[i]} = {j}");
                         min = cost[j] + priceval * dist;
                         parent[i] = j;
+                    }
+                    else
+                    {
+                        Logger.Log(3, $" Ignore as (cost[j] + priceval * dist) > min i.e. {(cost[j] + priceval * dist)} > {min}");
                     }
 
                 }
 
                 cost[i] = min;
+                Logger.Log(3, $"cost[i] = min  i.e. cost at {i} should be replace with {min} i.e. {cost[i]} = {min}");
+                Logger.Log(4, "cost array is >> ");
+                Logger.Log(5, cost);
+                Logger.Log(4, "parent array is >> ");
+                Logger.Log(5, parent);
 
             }
+
 
 
             //after all costs from cost[1] up to cost[18] are found, we pick
@@ -84,16 +106,26 @@ Your car can travel 170 miles on a tank of gas.
             int answer = int.MaxValue;
             i = N - 1;
             dist = distance[i];
+            Logger.Log(0, $"i {i} startback {startback} answer {startback} dist {dist} cost[i] {cost[i]} distance[i] {distance[i]} ");
+
             while (dist <= maxroad && i >= 0)
             {
+                Logger.Log(1, $"i {i} startback {startback} answer {startback} dist {dist} cost[i] {cost[i]} distance[i] {distance[i]} ");
                 if (cost[i] < answer)
                 {
+                    Logger.Log(2, $"cost[i] < answer {cost[i]} <{answer}");
+
                     answer = cost[i];
                     startback = i;
+                    Logger.Log(2, $"so answer {answer} startback {startback}");
                 }
+                else
+                    Logger.Log(2, $"Ignore as cost[i] > answer i.e. {cost[i]} > {answer}");
+
                 i--;
                 dist += distance[i];
             }
+            Logger.Flush();
         }
     }
 }

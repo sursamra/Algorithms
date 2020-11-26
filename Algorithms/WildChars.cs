@@ -15,22 +15,16 @@ namespace Algorithms
          * Example WildcardCharacters("++++* ghabeee") should returns true
          * Example WildcardCharacters("**+* eeebbbghhh") should returns true **+*{2} mmmrrrkbb
          * * Example WildcardCharacters("**+*{2} mmmrrrkbb") should returns true 
-         * 
-         * 
-
 
          */
-
-
-
         public static string WildcardCharacters(string str)
         {
-
             string first = str.Split(' ')[0];
             string second = str.Split(' ')[1];
             bool result = true;
             int n = 0;
             int secondCounter = 0;
+
             for (int i = 0; i < first.Length; i++)
             {
                 char token = first[i];
@@ -59,7 +53,6 @@ namespace Algorithms
                     {
                         result = false;
                         break;
-
                     }
                     else
                         secondCounter++;
@@ -74,9 +67,7 @@ namespace Algorithms
                     }
                     else
                         secondCounter = +secondCounter + 3;
-
                 }
-
             }
             // code goes here  
             return result.ToString().ToLower();

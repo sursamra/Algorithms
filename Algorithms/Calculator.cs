@@ -16,11 +16,10 @@ namespace Algorithms
 
             var operations = new Dictionary<char, Func<int, int, int>>
             {
-          {'+',(_,__)=>_+__},
-          {'/',(_,__)=>_/__},
-          {'-',(_,__)=>_-__},
-          {'*',(_,__)=>_*__},
-
+              {'+',(_,__)=>_+__},
+              {'/',(_,__)=>_/__},
+              {'-',(_,__)=>_-__},
+              {'*',(_,__)=>_*__},
             };
 
             StringBuilder sbFirst = new StringBuilder();
@@ -80,17 +79,9 @@ namespace Algorithms
                 }
 
             }
+            //deal with last operator and number
             result = operations[opr](int.Parse(sbFirst.ToString()), int.Parse(sbSecond.ToString()));
-
-            // code goes here  
             return result.ToString();
-
-        }
-
-        static void Main1()
-        {
-            // keep this function call here
-            Console.WriteLine(Calculator(Console.ReadLine()));
         }
 
     }

@@ -8,15 +8,18 @@ namespace Algorithms
     {
         private static void Main(string[] args)
         {
-            //changes from bugfixes branch
-            //from previous checkouts rest ( delete changes)
-            // test changes
-            //SurSamra made changes online.
-            //For pull request
-            //forked by l4m2
-            // updated by sursamra in master
-            //Dijkstras_printing_paths.Test();
-           
+      //changes from bugfixes branch
+      //from previous checkouts rest ( delete changes)
+      // test changes
+      //SurSamra made changes online.
+      //For pull request
+      //forked by l4m2
+      // updated by sursamra in master
+      //Dijkstras_printing_paths.Test();
+      int[] arr = { 4, 2, 1, 7, 8, 1, 2, 8, 1, 0 };
+      SlidingWindow.findMaxSumArray(arr,3);
+      int[] arr2 = { 4, 2, 2, 7, 8, 1, 2, 8, 15 };
+      SlidingWindow.findSmallestSubarray(arr2, 11);
            string val = TestWildcardCharacters.WildcardCharacters("++*{5} gheeeee");
            val = TestWildcardCharacters.WildcardCharacters("+++++* abcdemmmmmm");
            val = TestWildcardCharacters.WildcardCharacters("**+*{2} mmmrrrkbb");

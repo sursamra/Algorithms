@@ -6,61 +6,64 @@ namespace Algorithms
 {
     internal class Program
     {
-        private static void Main(string[] args)
-        {
-            //changes from bugfixes branch
-            //from previous checkouts rest ( delete changes)
-            // test changes
-            //SurSamra made changes online.
-            //For pull request
-            //forked by l4m2
-            // updated by sursamra in master
-            //Dijkstras_printing_paths.Test();
-           
-           string val = TestWildcardCharacters.WildcardCharacters("++*{5} gheeeee");
-           val = TestWildcardCharacters.WildcardCharacters("+++++* abcdemmmmmm");
-           val = TestWildcardCharacters.WildcardCharacters("**+*{2} mmmrrrkbb");
-            
-             
+    private static void Main(string[] args)
+    {
+      //changes from bugfixes branch
+      //from previous checkouts rest ( delete changes)
+      // test changes
+      //SurSamra made changes online.
+      //For pull request
+      //forked by l4m2
+      // updated by sursamra in master
+      //Dijkstras_printing_paths.Test();
+      int[] arr = { 4, 2, 1, 7, 8, 1, 2, 8, 1, 0 };
+      SlidingWindow.findMaxSumArray(arr, 3);
+      int[] arr2 = { 4, 2, 2, 7, 8, 1, 2, 8, 15 };
+      SlidingWindow.findSmallestSubarray(arr2, 11);
+      string val = TestWildcardCharacters.WildcardCharacters("++*{5} gheeeee");
+      val = TestWildcardCharacters.WildcardCharacters("+++++* abcdemmmmmm");
+      val = TestWildcardCharacters.WildcardCharacters("**+*{2} mmmrrrkbb");
 
-            string s = MainClass.Calculator("6*(4/2)+3*1");
-            Minimum_costs_Fueling_car_with_diff_prices.Test();
-            Prim_Minimum_Spanning_tree.Test();
-            Car_fueling_gas_Station.Test1();
-            Car_fueling_gas_Station.Test2();
-            Algorithms.Trees.BinarySearchTree.Test();
-            Dijkstras_shortest_path_greedy.RunDijkstra();
 
-            foreach (var item in GetPer(new char[] { 'a', 'b', 'c' }))
-            {
-                // Console.WriteLine(item);
-            }
-            MinWindowSubstring(new string[] { "aabdccdbcacd", "aad" });
 
-            Console.WriteLine(AreStringsAnagrams("elvies", "lives"));
+      string s = MainClass.Calculator("6*(4/2)+3*1");
+      Minimum_costs_Fueling_car_with_diff_prices.Test();
+      Prim_Minimum_Spanning_tree.Test();
+      Car_fueling_gas_Station.Test1();
+      Car_fueling_gas_Station.Test2();
+      Algorithms.Trees.BinarySearchTree.Test();
+      Dijkstras_shortest_path_greedy.RunDijkstra();
 
-            Tuple<int, int> result = FindTwoSum(new[] { 1, 2, 4, 5, 5, 6 }, 10);
-            Console.WriteLine(result.Item1 + " " + result.Item2);
-            Console.WriteLine(IndexOfLongestRun("aawwwddddccvvzzzzzzzz5555555555555555555555555555555555555555zzzzzzzz"));
-            Console.WriteLine(Reverse1("abc def"));
-            Console.WriteLine(Reverse2("abc def"));
-            Duplicates(new[] { "abc", "def", "abc" }).All(a => { Console.WriteLine(a); return true; });
-            Console.WriteLine(RomanToInteger("MCMLXI"));
-            Console.WriteLine("Fibonacci numbers");
-            Enumerable.Range(0, 10).All(a => { Console.WriteLine(Fibonacci(a)); return true; });
-            //Fibonacci();
-            Console.WriteLine("end Fibonacci numbers");
+      foreach (var item in GetPer(new char[] { 'a', 'b', 'c' }))
+      {
+        // Console.WriteLine(item);
+      }
+      MinWindowSubstring(new string[] { "aabdccdbcacd", "aad" });
 
-            Console.WriteLine(LongestString(new string[] { "hello", "who", "sfsd", "news" }));
-            Console.WriteLine(UniqueCharsInString("abcabcabcabcabc"));
-            Console.WriteLine(ReverseString("abcdef"));
-            Console.WriteLine(Palindrom("eye"));
-            Larget3Elements(new string[] { "abc", "sdfsdf", "df", "323", "2333223" }).All(a => { Console.WriteLine(a.ToString()); return true; });
+      Console.WriteLine(AreStringsAnagrams("elvies", "lives"));
 
-            Console.WriteLine(DeepestString("[a [b [c [d value]]]]"));
+      Tuple<int, int> result = FindTwoSum(new[] { 1, 2, 4, 5, 5, 6 }, 10);
+      Console.WriteLine(result.Item1 + " " + result.Item2);
+      Console.WriteLine(IndexOfLongestRun("aawwwddddccvvzzzzzzzz5555555555555555555555555555555555555555zzzzzzzz"));
+      Console.WriteLine(Reverse1("abc def"));
+      Console.WriteLine(Reverse2("abc def"));
+      Duplicates(new[] { "abc", "def", "abc" }).All(a => { Console.WriteLine(a); return true; });
+      Console.WriteLine(RomanToInteger("MCMLXI"));
+      Console.WriteLine("Fibonacci numbers");
+      Enumerable.Range(0, 10).All(a => { Console.WriteLine(Fibonacci(a)); return true; });
+      //Fibonacci();
+      Console.WriteLine("end Fibonacci numbers");
 
-            Console.Read();
-        }
+      Console.WriteLine(LongestString(new string[] { "hello", "who", "sfsd", "news" }));
+      Console.WriteLine(UniqueCharsInString("abcabcabcabcabc"));
+      Console.WriteLine(ReverseString("abcdef"));
+      Console.WriteLine(Palindrom("eye"));
+      Larget3Elements(new string[] { "abc", "sdfsdf", "df", "323", "2333223" }).All(a => { Console.WriteLine(a.ToString()); return true; });
+
+      Console.WriteLine(DeepestString("[a [b [c [d value]]]]"));
+
+      Console.Read();
+    }
         // A C# program for Dijkstra's single 
         // source shortest path algorithm. 
         // The program is for adjacency matrix 

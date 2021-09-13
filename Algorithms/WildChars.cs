@@ -17,37 +17,46 @@ namespace Algorithms
      * * Example WildcardCharacters("**+*{2} mmmrrrkbb") should returns true 
 
      */
-    public static string WildcardCharacters_new(string str)
-    {
-      char[] first = str.Split(' ')[0].ToCharArray();
-      char[] sec = str.Split(' ')[1].ToCharArray();
-      int sec_counter = 0;
-      for (int i = 0; i < first.Length; i++)
-      {
-        switch (first[i])
+     public static string WildcardCharacters_new(string str)
         {
-          case '+':
-            if (sec[sec_counter] == sec[sec_counter + 1])
-              return "false";
-            sec_counter++;
-            break;
-
-          case '*':
+            string first = str.Split(' ')[0];
+            string sec = str.Split(' ')[1];            
+            int first_counter = 0;
+            int sec_counter = 0;
+            for (int i = 0; i < first.Length; i++)
             {
-              //if (first[i+1] == '{' )
-              // complete it
+                first_counter = i;                
+                char c = first[i];
 
-              if (sec_counter + 2 > sec.Length) return "false";
-              if (sec[sec_counter] != sec[sec_counter + 1] && sec[sec_counter + 1] != sec[sec_counter + 2])
-                return "false";
-              
+                switch (c)
+                {
+                    case '+':                        
+                        if (sec_counter + 1 > sec.Length)
+                            return "false";
+                        sec_counter += 1;
+                        break;
+                    case '*':
+                        int num = 0;
+                        if (i + 1 < first.Length && first[i + 1] == '{')
+                        {
+                            num = int.Parse(GetStringBetweenChars(first, '{', '}'));
+                            i = i + 2 + num.ToString().Length;
+                        }
+                        else
+                            num = 3;
+                        if ((sec_counter + num < sec.Length) && (sec[sec_counter] != sec[sec_counter + 1] && sec[sec_counter] != sec[sec_counter + 2]))
+                            return "false";
+                        sec_counter += num;
+
+
+                        break;
+
+                }
             }
-            break;
-          
+            
+            return (sec_counter < sec.Length - 1)?"false":"true";
+
         }
-      }
-      return "true";
-    }
     public static string WildcardCharacters(string str)
     {
       string first = str.Split(' ')[0];

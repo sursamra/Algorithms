@@ -17,6 +17,28 @@ namespace Algorithms
      * * Example WildcardCharacters("**+*{2} mmmrrrkbb") should returns true 
 
      */
+     public static string GetStringBetweenStrings(string text, string start, string end)
+        {
+            int p1 = text.IndexOf(start) + start.Length;
+            int p2 = text.IndexOf(end, p1);
+
+            if (end == "") return (text.Substring(p1));
+            else return text.Substring(p1, p2 - p1);
+        }
+        public static string GetStringBetweenChars(string input, char charFrom, char charTo)
+        {
+            int posFrom = input.IndexOf(charFrom);
+            if (posFrom != -1) //if found char
+            {
+                int posTo = input.IndexOf(charTo, posFrom + 1);
+                if (posTo != -1) //if found char
+                {
+                    return input.Substring(posFrom + 1, posTo - posFrom - 1);
+                }
+            }
+
+            return string.Empty;
+        }
      public static string WildcardCharacters_new(string str)
         {
             string first = str.Split(' ')[0];

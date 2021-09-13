@@ -61,7 +61,10 @@ namespace Algorithms
         public static void Flush(bool saveTime = false)
         {
             string str = saveTime ? DateTime.Now.ToString("yyyymmddhhMMss") : "" + ".txt";
-            System.IO.File.WriteAllLines($@".\Logs\{_name}{str}", logs);
+            using (StreamWriter sw = File.AppendText($@".\Logs\{_name}{str}"))
+            {
+                logs.ForEach(_ => sw.WriteLine(_));
+            }                
             logs = new List<string>();
         }
         public static string ArrayToString<T>(T[] arr)

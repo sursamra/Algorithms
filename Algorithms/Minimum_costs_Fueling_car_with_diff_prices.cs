@@ -106,6 +106,8 @@ Your car can travel 170 miles on a tank of gas.
             int answer = int.MaxValue;
             i = N - 1;
             dist = distance[i];
+            Logger.Log(0, "after all costs from cost[1] up to cost[18] are found,\n we pick minimum cost among the stations within 170 miles away " +
+                "from station 19 \n and show the stations we stopped at by backtracking from end to start");
             Logger.Log(0, $"i {i} startback {startback} answer {startback} dist {dist} cost[i] {cost[i]} distance[i] {distance[i]} ");
 
             while (dist <= maxroad && i >= 0)

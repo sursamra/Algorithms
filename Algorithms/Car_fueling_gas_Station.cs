@@ -4,6 +4,15 @@ namespace Algorithms
 {
     static class Car_fueling_gas_Station
     {
+        
+            /*
+     * cars needed fuelshown in array  int[] cars = { 2, 8, 4, 3, 2 } and
+     * fuel stations limited capacity  int x = 7, y = 11, z = 3;
+     * when each car from the array move to the fuel station, it needs to check if there is enough fuel to fill 
+     * if there is not then the car must wait untill one of the other is done filling and then only 
+     * the next car can move to the fuel station. the time it takes to fill the tank is 1 second per gallon. 
+     * Find the mininum filling time for above listed cars.
+     */
         public static void Test1()
         {
             int[] cars = { 2, 8, 4, 3, 2 };
